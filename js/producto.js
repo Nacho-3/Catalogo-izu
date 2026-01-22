@@ -1,33 +1,28 @@
-const contenedor = document.getElementById('producto');
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
+const contenedor = document.getElementById("detalleProducto");
 
-fetch('data/productos.json')
+// Obtener ID desde la URL
+const params = new URLSearchParams(window.location.search);
+const idProducto = parseInt(params.get("id"));
+
+fetch("data/productos.json")
   .then(res => res.json())
   .then(productos => {
-    const prod = productos.find(p => p.id == id);
+    const producto = productos.find(p => p.id === idProducto);
 
-    if (!prod) {
-      contenedor.innerHTML = '<p>Producto no encontrado</p>';
+    if (!producto) {
+      contenedor.innerHTML = "<p>Producto no encontrado</p>";
       return;
     }
 
     contenedor.innerHTML = `
-      <img src="${prod.imagen}" alt="${prod.nombre}">
-      
-      <h2>${prod.nombre}</h2>
-      <p class="precio">$ ${prod.precio}</p>
-
-      <p class="desc">
-        Consultá disponibilidad y talles por WhatsApp.
-      </p>
-
-      <a class="btn-wsp"
-         href="https://wa.me/549XXXXXXXXXX?text=${encodeURIComponent(
-           `Hola! Quiero consultar por:\n${prod.nombre}\nPrecio: $${prod.precio}`
-         )}"
-         target="_blank">
-         Consultar por WhatsApp
-      </a>
+      <div class="col-md-6">
+        <img src="${producto.img}" class="img-fluid rounded">
+      </div>
+      <div class="col-md-6">
+        <h2>${producto.nombre}</h2>
+        <p>${producto.descripcion}</p>
+        <h3 class="precio">$${producto.precio}</h3>
+        <button class="mt-3">Consultar</button>
+      </div>
     `;
   });

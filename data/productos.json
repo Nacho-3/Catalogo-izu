@@ -1,16 +1,34 @@
 [
   {
     "id": 1,
-    "nombre": "Remera Oversize Negra",
-    "precio": 18900,
-    "categoria": "remeras",
-    "imagen": "assets/img/remera1.png"
+    "nombre": "Remera Negra",
+    "precio": 12000,
+    "categoria": "urbanas",
+    "img": "assets/img/remera1.png",
+    "descripcion": "Remera negra de algodón premium"
   },
   {
     "id": 2,
-    "nombre": "Buzo Canguro Gris",
-    "precio": 25900,
-    "categoria": "buzos",
-    "imagen": "assets/img/buzo1.png"
+    "nombre": "Buzo Oversize",
+    "precio": 22000,
+    "categoria": "skate",
+    "img": "assets/img/remera1.png",
+    "descripcion": "Buzo oversize ideal para streetwear"
+  },
+  {
+    "id": 3,
+    "nombre": "Campera Clásica",
+    "precio": 35000,
+    "categoria": "clasicas",
+    "img": "assets/img/remera1.png",
+    "descripcion": "Campera clásica urbana"
+  },
+  {
+    "id": 4,
+    "nombre": "Remera Skate",
+    "precio": 14000,
+    "categoria": "skate",
+    "img": "assets/img/remera1.png",
+    "descripcion": "Remera estilo skate"
   }
 ]
