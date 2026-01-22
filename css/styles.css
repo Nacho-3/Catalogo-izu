@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+
+.logo {
+  font-size: 22px;
+}
+
+.menu-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+/* SEARCH */
+.search {
+  padding: 10px;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* MENU */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  background: #111;
+  padding: 20px;
+  transition: .3s;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.side-menu button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+}
+
+/* PROMO */
+.promo {
+  padding: 15px;
+}
+
+.container {
+  padding: 16px;
+}
+
+h2 {
+  margin-bottom: 16px;
+}
+
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: #111;
+  border-radius: 10px;
+  padding: 12px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 8px 0 4px;
+  font-size: 16px;
+}
+
+.precio {
+  font-weight: bold;
+  color: #00ff88;
+  margin-bottom: 8px;
+}
+
+.card button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #ff3b3b;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.card span {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .side-menu {
+    position: static;
+    display: flex;
+    height: auto;
+    width: 100%;
+    background: none;
+  }
+}
+
+/* PRODUCTO */
+.producto {
+  padding: 15px;
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.producto h2 {
+  margin: 15px 0 5px;
+}
+
+.desc {
+  color: #aaa;
+  margin: 10px 0;
+}
+
+.btn-wsp {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background: #25D366;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-decoration: none;
+}

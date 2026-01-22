@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IZU Indumentaria</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <button class="menu-btn" id="openMenu">☰</button>
+  <h1 class="logo">izu</h1>
+</header>
+
+<div class="search">
+  <input type="text" placeholder="¿Qué estás buscando?" id="searchInput">
+</div>
+
+<nav class="side-menu" id="menu">
+  <button id="closeMenu">✕</button>
+  <button data-cat="all">Todos</button>
+  <button data-cat="urbanas">Urbanas</button>
+  <button data-cat="clasicas">Clásicas</button>
+  <button data-cat="skate">Skate</button>
+</nav>
+
+<main class="container">
+  <section class="promo">
+    <h2>Toda la ropa</h2>
+  </section>
+
+  <section class="grid" id="gridProductos"></section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

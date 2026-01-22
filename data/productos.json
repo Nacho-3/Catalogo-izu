@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remera Oversize Negra",
+    "precio": 18900,
+    "categoria": "remeras",
+    "imagen": "assets/img/remera1.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Buzo Canguro Gris",
+    "precio": 25900,
+    "categoria": "buzos",
+    "imagen": "assets/img/buzo1.png"
+  }
+]
