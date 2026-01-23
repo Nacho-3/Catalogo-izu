@@ -5,7 +5,8 @@
     "precio": 12000,
     "categoria": "urbanas",
     "img": "assets/img/remera1.png",
-    "descripcion": "Remera negra de algodón premium"
+    "descripcion": "Remera negra de algodón premium",
+    "talles": ["S", "M", "L", "XL"]
   },
   {
     "id": 2,

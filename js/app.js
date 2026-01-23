@@ -1,15 +1,21 @@
 const grid = document.getElementById("gridProductos");
 const botonesMenu = document.querySelectorAll(".side-menu button");
 
+const openMenu = document.getElementById("openMenu");
+const closeMenu = document.getElementById("closeMenu");
+const menu = document.getElementById("menu");
+const overlay = document.getElementById("menuOverlay");
+
 let productos = [];
 
-// Cargar productos desde JSON
+
 fetch("data/productos.json")
   .then(res => res.json())
   .then(data => {
     productos = data;
     renderProductos(productos);
   });
+
 
 function renderProductos(lista) {
   grid.innerHTML = "";
@@ -33,28 +39,36 @@ function renderProductos(lista) {
   });
 }
 
-// Filtro por categoría
+
 botonesMenu.forEach(btn => {
   btn.addEventListener("click", () => {
     const cat = btn.dataset.cat;
+
+    if (!cat) return;
 
     if (cat === "all") {
       renderProductos(productos);
     } else {
       renderProductos(productos.filter(p => p.categoria === cat));
     }
+
+    cerrarMenu();
   });
 });
 
-// MENU HAMBURGUESA
-const openMenu = document.getElementById("openMenu");
-const closeMenu = document.getElementById("closeMenu");
-const menu = document.getElementById("menu");
 
-openMenu.addEventListener("click", () => {
+function abrirMenu() {
   menu.classList.add("open");
-});
+  overlay.classList.add("show");
+  document.body.classList.add("menu-open");
+}
 
-closeMenu.addEventListener("click", () => {
+function cerrarMenu() {
   menu.classList.remove("open");
-});
+  overlay.classList.remove("show");
+  document.body.classList.remove("menu-open");
+}
+
+openMenu.addEventListener("click", abrirMenu);
+closeMenu.addEventListener("click", cerrarMenu);
+overlay.addEventListener("click", cerrarMenu);

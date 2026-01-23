@@ -106,7 +106,7 @@ body {
 }
 
 
-/* MOBILE MENU (pantallas chicas) */
+/*diseño mobile*/
 @media (max-width: 991px) {
   .side-menu {
     position: fixed;
@@ -124,5 +124,29 @@ body {
 
   .side-menu.open {
     left: 0;
+  }
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  z-index: 900;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 991px) {
+  body.menu-open {
+    overflow: hidden;
   }
 }
