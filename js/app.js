@@ -77,3 +77,14 @@ function cerrar_menu() {
 boton_abrir_menu.addEventListener("click", abrir_menu);
 boton_cerrar_menu.addEventListener("click", cerrar_menu);
 overlay_menu.addEventListener("click", cerrar_menu);
+
+
+/* ================= MENU MOBILE SUBMENUS ================= */
+
+const items_menu = document.querySelectorAll(".item_menu.tiene_submenu");
+
+items_menu.forEach(item => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("abierto");
+  });
+});

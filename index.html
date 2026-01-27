@@ -10,22 +10,76 @@
 </head>
 <body>
 
-<header class="header container-fluid">
-  <button class="menu-btn d-lg-none" id="openMenu">☰</button>
-  <h1 class="logo">izu indumentaria</h1>
+<header class="header_principal">
+  <div class="contenedor_header">
+
+    <div class="titulo_marca">
+      <span class="texto_marca">IZU</span>
+
+      <img 
+        src="assets/img/logoizu.png" 
+        alt="Logo IZU" 
+        class="logo_marca"
+      >
+
+      <span class="texto_marca">INDUMENTARIA</span>
+    </div>
+
+    <div class="buscador">
+      <input 
+        type="text" 
+        placeholder="¿Qué estás buscando?" 
+        id="searchInput"
+      >
+    </div>
+
+  </div>
+
+  <!-- MENU PRINCIPAL -->
+  <nav class="menu_principal">
+
+    <div class="item_menu tiene_submenu">
+      Bermudas <span class="flecha">▾</span>
+      <div class="submenu">
+        <a href="#">Cargo algodón</a>
+        <a href="#">Cargo gabardina</a>
+        <a href="#">Híbridas</a>
+        <a href="#">Tejidas</a>
+        <a href="#">Bámbula</a>
+        <a href="#">Lino</a>
+      </div>
+    </div>
+
+    <div class="item_menu">
+      Sudaderas
+    </div>
+
+    <div class="item_menu tiene_submenu">
+      Remeras <span class="flecha">▾</span>
+      <div class="submenu">
+        <a href="#">Bulky bordadas</a>
+        <a href="#">Over estampadas</a>
+        <a href="#">Over lisas</a>
+      </div>
+    </div>
+
+    <div class="item_menu tiene_submenu">
+      Camisas <span class="flecha">▾</span>
+      <div class="submenu">
+        <a href="#">Tejidas</a>
+        <a href="#">Lisas</a>
+      </div>
+    </div>
+
+    <div class="item_menu tiene_submenu">
+      Buddy jeans <span class="flecha">▾</span>
+      <div class="submenu">
+        <a href="#">Jeans baggy</a>
+      </div>
+    </div>
+
+  </nav>
 </header>
-
-<div class="search container">
-  <input type="text" placeholder="¿Qué estás buscando?" id="searchInput">
-</div>
-
-<nav class="side-menu" id="menu">
-  <button id="closeMenu" class="d-lg-none">✕</button>
-  <button data-cat="all">Todos</button>
-  <button data-cat="urbanas">Urbanas</button>
-  <button data-cat="clasicas">Clásicas</button>
-  <button data-cat="skate">Skate</button>
-</nav>
 
 <div class="menu-overlay" id="menuOverlay"></div>
 
