@@ -1,74 +1,79 @@
-const grid = document.getElementById("gridProductos");
-const botonesMenu = document.querySelectorAll(".side-menu button");
+const contenedor_productos = document.getElementById("gridProductos");
+const botones_categoria = document.querySelectorAll(".side-menu button");
 
-const openMenu = document.getElementById("openMenu");
-const closeMenu = document.getElementById("closeMenu");
-const menu = document.getElementById("menu");
-const overlay = document.getElementById("menuOverlay");
+const boton_abrir_menu = document.getElementById("openMenu");
+const boton_cerrar_menu = document.getElementById("closeMenu");
+const menu_lateral = document.getElementById("menu");
+const overlay_menu = document.getElementById("menuOverlay");
 
-let productos = [];
+let lista_productos = [];
 
+/* ================= CARGAR PRODUCTOS ================= */
 
 fetch("data/productos.json")
-  .then(res => res.json())
-  .then(data => {
-    productos = data;
-    renderProductos(productos);
+  .then(respuesta => respuesta.json())
+  .then(datos => {
+    lista_productos = datos;
+    mostrar_productos(lista_productos);
   });
 
+/* ================= MOSTRAR PRODUCTOS ================= */
 
-function renderProductos(lista) {
-  grid.innerHTML = "";
+function mostrar_productos(productos) {
+  contenedor_productos.innerHTML = "";
 
-  lista.forEach(prod => {
-    const col = document.createElement("div");
-    col.className = "col-lg-3 col-md-4 col-sm-6";
+  productos.forEach(producto => {
+    const columna = document.createElement("div");
+    columna.className = "col-lg-3 col-md-4 col-sm-6";
 
-    col.innerHTML = `
+    columna.innerHTML = `
       <div class="card-producto">
-        <img src="${prod.img}" alt="${prod.nombre}">
-        <h3>${prod.nombre}</h3>
-        <span class="precio">$${prod.precio}</span>
-        <a href="producto.html?id=${prod.id}">
+        <img src="${producto.imagenes[0]}" alt="${producto.nombre}">
+        <h3>${producto.nombre}</h3>
+        <span class="precio">$${producto.precio}</span>
+        <a href="producto.html?id=${producto.id}">
           <button>Ver producto</button>
         </a>
       </div>
     `;
 
-    grid.appendChild(col);
+    contenedor_productos.appendChild(columna);
   });
 }
 
+/* ================= FILTRAR POR CATEGORÍA ================= */
 
-botonesMenu.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const cat = btn.dataset.cat;
+botones_categoria.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const categoria = boton.dataset.cat;
 
-    if (!cat) return;
-
-    if (cat === "all") {
-      renderProductos(productos);
+    if (categoria === "all") {
+      mostrar_productos(lista_productos);
     } else {
-      renderProductos(productos.filter(p => p.categoria === cat));
+      const filtrados = lista_productos.filter(
+        producto => producto.categoria === categoria
+      );
+      mostrar_productos(filtrados);
     }
 
-    cerrarMenu();
+    cerrar_menu();
   });
 });
 
+/* ================= MENU MOBILE ================= */
 
-function abrirMenu() {
-  menu.classList.add("open");
-  overlay.classList.add("show");
+function abrir_menu() {
+  menu_lateral.classList.add("open");
+  overlay_menu.classList.add("show");
   document.body.classList.add("menu-open");
 }
 
-function cerrarMenu() {
-  menu.classList.remove("open");
-  overlay.classList.remove("show");
+function cerrar_menu() {
+  menu_lateral.classList.remove("open");
+  overlay_menu.classList.remove("show");
   document.body.classList.remove("menu-open");
 }
 
-openMenu.addEventListener("click", abrirMenu);
-closeMenu.addEventListener("click", cerrarMenu);
-overlay.addEventListener("click", cerrarMenu);
+boton_abrir_menu.addEventListener("click", abrir_menu);
+boton_cerrar_menu.addEventListener("click", cerrar_menu);
+overlay_menu.addEventListener("click", cerrar_menu);

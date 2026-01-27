@@ -10,6 +10,8 @@ body {
   color: #fff;
 }
 
+/* ================= HEADER / MENU (INDEX) ================= */
+
 .header {
   display: flex;
   align-items: center;
@@ -40,6 +42,16 @@ body {
   border: none;
 }
 
+/* ================= MENU CATEGORÍAS ================= */
+
+.side-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px auto;
+}
+
 .side-menu button {
   padding: 8px 16px;
   background: transparent;
@@ -51,17 +63,6 @@ body {
   transition: all 0.25s ease;
 }
 
-
-.side-menu {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 20px auto;
-}
-
-
-
 .side-menu button:hover {
   background: #fff;
   color: #000;
@@ -71,6 +72,20 @@ body {
 .side-menu button:active {
   transform: scale(0.95);
 }
+
+/* ================= BOTÓN VOLVER ================= */
+
+.btn_volver {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* ================= CARDS PRODUCTOS (INDEX) ================= */
 
 .card-producto {
   background: #111;
@@ -89,7 +104,7 @@ body {
   font-size: 16px;
 }
 
-.precio {
+.card-producto .precio {
   color: #00ff88;
   font-weight: bold;
 }
@@ -105,8 +120,8 @@ body {
   cursor: pointer;
 }
 
+/* ================= MENU MOBILE ================= */
 
-/*diseño mobile*/
 @media (max-width: 991px) {
   .side-menu {
     position: fixed;
@@ -125,14 +140,15 @@ body {
   .side-menu.open {
     left: 0;
   }
+
+  body.menu-open {
+    overflow: hidden;
+  }
 }
 
 .menu-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.6);
   opacity: 0;
   visibility: hidden;
@@ -145,8 +161,197 @@ body {
   visibility: visible;
 }
 
-@media (max-width: 991px) {
-  body.menu-open {
-    overflow: hidden;
+/* =========================================================
+   ================ DETALLE DE PRODUCTO ====================
+   (SOLO AFECTA producto.html)
+   ========================================================= */
+
+#detalleProducto .titulo-producto {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+#detalleProducto .descripcion {
+  color: #aaa;
+}
+
+#detalleProducto .precio {
+  font-size: 26px;
+  color: #00ff88;
+}
+
+/* ================= GALERÍA ================= */
+
+#detalleProducto img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* ================= TALLES Y COLORES ================= */
+
+#detalleProducto .talles,
+#detalleProducto .colores {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* -------- TALLES -------- */
+
+#detalleProducto .talle {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+#detalleProducto .talle.activo {
+  border-color: #00ff88;
+}
+
+#detalleProducto .talle.agotado {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+#detalleProducto .talle.agotado::after {
+  content: "";
+  position: absolute;
+  width: 130%;
+  height: 2px;
+  background: red;
+  top: 50%;
+  left: -15%;
+  transform: rotate(-45deg);
+}
+
+/* -------- COLORES -------- */
+
+#detalleProducto .color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #555;
+  cursor: pointer;
+  position: relative;
+}
+
+#detalleProducto .color.activo {
+  outline: 2px solid #00ff88;
+}
+
+#detalleProducto .color.agotado {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+#detalleProducto .color.agotado::after {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 2px;
+  background: red;
+  top: 50%;
+  left: -20%;
+  transform: rotate(-45deg);
+}
+
+/* ================= BOTÓN CONSULTAR ================= */
+
+#detalleProducto .btn-consultar {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  background: #00ff88;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ================= MOBILE PRODUCTO ================= */
+
+@media (max-width: 768px) {
+  #detalleProducto .talle {
+    width: 50px;
+    height: 50px;
+  }
+
+  #detalleProducto .color {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* =========================
+   GALERÍA DE IMÁGENES
+========================= */
+
+.galeria_producto {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 20px;
+}
+
+.imagen_producto {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+/* BOTONES */
+.btn_galeria {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.55);
+  color: white;
+  border: none;
+  font-size: 28px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  z-index: 2;
+}
+
+.btn_galeria:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+#btn_anterior {
+  left: 10px;
+}
+
+#btn_siguiente {
+  right: 10px;
+}
+
+/* =========================
+   ANIMACIÓN FADE
+========================= */
+
+.fade {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.fade_oculto {
+  opacity: 0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .btn_galeria {
+    font-size: 22px;
+    padding: 6px 12px;
   }
 }

@@ -1,35 +1,20 @@
 [
   {
-    "id": 1,
-    "nombre": "Remera Negra",
+    "id": "01_remera_oversize",
+    "nombre": "Remera Oversize Negra",
     "precio": 12000,
     "categoria": "urbanas",
-    "img": "assets/img/remera1.png",
-    "descripcion": "Remera negra de algodón premium",
-    "talles": ["S", "M", "L", "XL"]
-  },
-  {
-    "id": 2,
-    "nombre": "Buzo Oversize",
-    "precio": 22000,
-    "categoria": "skate",
-    "img": "assets/img/remera1.png",
-    "descripcion": "Buzo oversize ideal para streetwear"
-  },
-  {
-    "id": 3,
-    "nombre": "Campera Clásica",
-    "precio": 35000,
-    "categoria": "clasicas",
-    "img": "assets/img/remera1.png",
-    "descripcion": "Campera clásica urbana"
-  },
-  {
-    "id": 4,
-    "nombre": "Remera Skate",
-    "precio": 14000,
-    "categoria": "skate",
-    "img": "assets/img/remera1.png",
-    "descripcion": "Remera estilo skate"
+    "imagenes": [
+      "assets/img/remera1.png",
+      "assets/img/remera1.png",
+      "assets/img/remera1.png"
+    ],
+    "descripcion": "Remera oversize de algodón premium",
+    "talles": {
+      "S": ["negro", "azul"],
+      "M": ["negro", "blanco"],
+      "L": [],
+      "XL": ["negro", "rojo"]
+    }
   }
 ]
