@@ -1,26 +1,30 @@
 const contenedor_productos = document.getElementById("gridProductos");
-const botones_categoria = document.querySelectorAll(".side-menu button");
-
-const boton_abrir_menu = document.getElementById("openMenu");
-const boton_cerrar_menu = document.getElementById("closeMenu");
-const menu_lateral = document.getElementById("menu");
+const menu_principal = document.querySelector(".menu_principal");
+const btn_menu = document.getElementById("openMenu");
 const overlay_menu = document.getElementById("menuOverlay");
 
 let lista_productos = [];
 
-/* ================= CARGAR PRODUCTOS ================= */
-
+/* =============================
+   CARGA DE PRODUCTOS
+============================= */
 fetch("data/productos.json")
-  .then(respuesta => respuesta.json())
+  .then(res => res.json())
   .then(datos => {
     lista_productos = datos;
     mostrar_productos(lista_productos);
   });
 
-/* ================= MOSTRAR PRODUCTOS ================= */
-
+/* =============================
+   MOSTRAR PRODUCTOS
+============================= */
 function mostrar_productos(productos) {
   contenedor_productos.innerHTML = "";
+
+  if (productos.length === 0) {
+    contenedor_productos.innerHTML = "<p>No hay productos para mostrar</p>";
+    return;
+  }
 
   productos.forEach(producto => {
     const columna = document.createElement("div");
@@ -41,50 +45,59 @@ function mostrar_productos(productos) {
   });
 }
 
-/* ================= FILTRAR POR CATEGORÍA ================= */
+/* =============================
+   FILTROS DEL MENU
+============================= */
+document.querySelectorAll(".submenu a, .item_menu[data-categoria]").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
 
-botones_categoria.forEach(boton => {
-  boton.addEventListener("click", () => {
-    const categoria = boton.dataset.cat;
+    const categoria = link.dataset.categoria;
+    const subcategoria = link.dataset.subcategoria;
+    const tipo = link.dataset.tipo;
 
-    if (categoria === "all") {
-      mostrar_productos(lista_productos);
-    } else {
-      const filtrados = lista_productos.filter(
-        producto => producto.categoria === categoria
-      );
-      mostrar_productos(filtrados);
+    let filtrados = lista_productos;
+
+    if (tipo !== "all") {
+      filtrados = filtrados.filter(p => p.categoria === categoria);
+
+      if (subcategoria) {
+        filtrados = filtrados.filter(p => p.subcategoria === subcategoria);
+      }
     }
 
+    mostrar_productos(filtrados);
     cerrar_menu();
   });
 });
 
-/* ================= MENU MOBILE ================= */
+/* =============================
+   MENU HAMBURGUESA
+============================= */
+btn_menu.addEventListener("click", () => {
+  menu_principal.classList.toggle("abierto");
+  overlay_menu.classList.toggle("show");
+});
 
-function abrir_menu() {
-  menu_lateral.classList.add("open");
-  overlay_menu.classList.add("show");
-  document.body.classList.add("menu-open");
-}
-
-function cerrar_menu() {
-  menu_lateral.classList.remove("open");
-  overlay_menu.classList.remove("show");
-  document.body.classList.remove("menu-open");
-}
-
-boton_abrir_menu.addEventListener("click", abrir_menu);
-boton_cerrar_menu.addEventListener("click", cerrar_menu);
 overlay_menu.addEventListener("click", cerrar_menu);
 
+function cerrar_menu() {
+  menu_principal.classList.remove("abierto");
+  overlay_menu.classList.remove("show");
+}
 
-/* ================= MENU MOBILE SUBMENUS ================= */
-
+/* =============================
+   SUBMENUS MOBILE
+============================= */
 const items_menu = document.querySelectorAll(".item_menu.tiene_submenu");
 
 items_menu.forEach(item => {
   item.addEventListener("click", () => {
-    item.classList.toggle("abierto");
+    if (window.innerWidth <= 768) {
+      items_menu.forEach(i => {
+        if (i !== item) i.classList.remove("abierto");
+      });
+      item.classList.toggle("abierto");
+    }
   });
 });

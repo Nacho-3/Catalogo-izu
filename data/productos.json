@@ -1,15 +1,16 @@
 [
   {
-    "id": "01_remera_oversize",
-    "nombre": "Remera Oversize Negra",
+    "id": "01_jeanbaggy_pecas",
+    "nombre": "Jean Baggy Pecas",
     "precio": 12000,
-    "categoria": "urbanas",
+    "categoria": "jeans",
+    "subcategoria": "baggy",
     "imagenes": [
-      "assets/img/remera1.png",
-      "assets/img/remera1.png",
+      "assets/img/BuddyJeans/JeansBaggy/02_jeanbaggy_pecas.jpg",
+      "assets/img/BuddyJeans/JeansBaggy/01_jeanbaggy_pecas.jpg",
       "assets/img/remera1.png"
     ],
-    "descripcion": "Remera oversize de algodón premium",
+    "descripcion": "Jean baggy con pecas",
     "talles": {
       "S": ["negro", "azul"],
       "M": ["negro", "blanco"],

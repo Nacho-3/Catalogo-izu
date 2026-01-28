@@ -12,70 +12,106 @@
 
 <header class="header_principal">
   <div class="contenedor_header">
-
     <div class="titulo_marca">
+      <button class="menu-toggle" id="openMenu">☰</button>
       <span class="texto_marca">IZU</span>
-
-      <img 
-        src="assets/img/logoizu.png" 
-        alt="Logo IZU" 
-        class="logo_marca"
-      >
-
+      <img src="assets/img/logoizu.png" alt="Logo IZU" class="logo_marca">
       <span class="texto_marca">INDUMENTARIA</span>
     </div>
 
     <div class="buscador">
-      <input 
-        type="text" 
-        placeholder="¿Qué estás buscando?" 
-        id="searchInput"
-      >
+      <input type="text" placeholder="¿Qué estás buscando?" id="searchInput">
     </div>
-
   </div>
 
-  <!-- MENU PRINCIPAL -->
+  
+
   <nav class="menu_principal">
-
-    <div class="item_menu tiene_submenu">
-      Bermudas <span class="flecha">▾</span>
-      <div class="submenu">
-        <a href="#">Cargo algodón</a>
-        <a href="#">Cargo gabardina</a>
-        <a href="#">Híbridas</a>
-        <a href="#">Tejidas</a>
-        <a href="#">Bámbula</a>
-        <a href="#">Lino</a>
-      </div>
+    <div class="menu-extra menu-extra-left">
+      <a href="https://www.google.com/maps?q=TU+DIRECCION+ACA" target="_blank" class="local-link">
+        <span class="local-icon"></span>
+        <span class="local-text">Conocé nuestro local físico</span>
+      </a>
     </div>
 
-    <div class="item_menu">
-      Sudaderas
+    <div class="menu-center">
+
+      <!-- VER TODO -->
+      <div class="item_menu filtro" data-tipo="all">
+        Ver todo
+      </div>
+
+      <!-- BERMUDAS -->
+      <div class="item_menu tiene_submenu filtro" data-categoria="bermudas">
+        Bermudas <span class="flecha">▾</span>
+        <div class="submenu">
+          <a class="filtro" data-categoria="bermudas">Ver todo en BERMUDAS</a>
+          <a class="filtro" data-categoria="bermudas" data-subcategoria="cargo">Cargo algodón</a>
+          <a class="filtro" data-categoria="bermudas" data-subcategoria="gabardina">Cargo gabardina</a>
+          <a class="filtro" data-categoria="bermudas" data-subcategoria="hibridas">Híbridas</a>
+          <a class="filtro" data-categoria="bermudas" data-subcategoria="tejidas">Tejidas</a>
+          <a class="filtro" data-categoria="bermudas" data-subcategoria="bambula">Bámbula</a>
+          <a class="filtro" data-categoria="bermudas" data-subcategoria="lino">Lino</a>
+        </div>
+      </div>
+
+      <!-- SUDADERAS -->
+      <div class="item_menu filtro" data-categoria="sudaderas">
+        Sudaderas
+      </div>
+
+      <!-- REMERAS -->
+      <div class="item_menu tiene_submenu filtro" data-categoria="remeras">
+        Remeras <span class="flecha">▾</span>
+        <div class="submenu">
+          <a class="filtro" data-categoria="remeras">Ver todo en REMERAS</a>
+          <a class="filtro" data-categoria="remeras" data-subcategoria="bulky">Bulky bordadas</a>
+          <a class="filtro" data-categoria="remeras" data-subcategoria="over_estampadas">Over estampadas</a>
+          <a class="filtro" data-categoria="remeras" data-subcategoria="over_lisas">Over lisas</a>
+        </div>
+      </div>
+
+      <!-- CAMISAS -->
+      <div class="item_menu tiene_submenu filtro" data-categoria="camisas">
+        Camisas <span class="flecha">▾</span>
+        <div class="submenu">
+          <a class="filtro" data-categoria="camisas">Ver todo en CAMISAS</a>
+          <a class="filtro" data-categoria="camisas" data-subcategoria="tejidas">Tejidas</a>
+          <a class="filtro" data-categoria="camisas" data-subcategoria="lisas">Lisas</a>
+        </div>
+      </div>
+
+      <!-- BUDDY JEANS -->
+      <div class="item_menu tiene_submenu filtro" data-categoria="jeans">
+        Buddy jeans <span class="flecha">▾</span>
+        <div class="submenu">
+          <a class="filtro" data-categoria="jeans">Ver todo en BUDDY JEANS</a>
+          <a class="filtro" data-categoria="jeans" data-subcategoria="baggy">Jeans baggy</a>
+        </div>
+      </div>
+
     </div>
 
-    <div class="item_menu tiene_submenu">
-      Remeras <span class="flecha">▾</span>
-      <div class="submenu">
-        <a href="#">Bulky bordadas</a>
-        <a href="#">Over estampadas</a>
-        <a href="#">Over lisas</a>
-      </div>
+
     </div>
 
-    <div class="item_menu tiene_submenu">
-      Camisas <span class="flecha">▾</span>
-      <div class="submenu">
-        <a href="#">Tejidas</a>
-        <a href="#">Lisas</a>
-      </div>
-    </div>
+    <div class="menu-extra menu-extra-right">
 
-    <div class="item_menu tiene_submenu">
-      Buddy jeans <span class="flecha">▾</span>
-      <div class="submenu">
-        <a href="#">Jeans baggy</a>
-      </div>
+      <a href="https://wa.me/549XXXXXXXXXX" target="_blank" class="social-link whatsapp">
+        <svg viewBox="0 0 32 32">
+          <path d="M19.11 17.88c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.91 1.13-.17.19-.34.21-.63.07-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01s-.51.07-.78.36c-.27.29-1.03 1.01-1.03 2.46 0 1.44 1.05 2.84 1.2 3.03.15.19 2.07 3.16 5.02 4.43.7.3 1.24.48 1.67.61.7.22 1.34.19 1.85.12.56-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/>
+          <path d="M16 3C9.38 3 4 8.38 4 15c0 2.65.86 5.1 2.33 7.1L4 29l7.14-2.28C13.03 27.55 14.49 28 16 28c6.62 0 12-5.38 12-12S22.62 3 16 3z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+
+      <a href="https://instagram.com/TU_USUARIO" target="_blank" class="social-link instagram">
+        <svg viewBox="0 0 24 24">
+          <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zM17.8 6.2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+        <span>Instagram</span>
+      </a>
+
     </div>
 
   </nav>
