@@ -41,14 +41,34 @@ function activar_galeria(){
 }
 
 function cambiar_imagen(direccion){
-  const imagen=document.getElementById("imagen_producto");
-  imagen.classList.add("fade_oculto");
-  setTimeout(()=>{
-    imagen_actual=(imagen_actual+direccion+imagenes_producto.length)%imagenes_producto.length;
-    imagen.src=imagenes_producto[imagen_actual];
-    imagen.classList.remove("fade_oculto");
-  },200);
+  const imagen = document.getElementById("imagen_producto");
+
+  imagen.classList.add("imagen_oculta");
+
+  setTimeout(() => {
+    imagen_actual = (imagen_actual + direccion + imagenes_producto.length) % imagenes_producto.length;
+    imagen.src = imagenes_producto[imagen_actual];
+    imagen.classList.remove("imagen_oculta");
+  }, 200);
 }
+
+let bloqueado = false;
+
+function cambiar_imagen(direccion){
+  if (bloqueado) return;
+  bloqueado = true;
+
+  const imagen = document.getElementById("imagen_producto");
+  imagen.classList.add("imagen_oculta");
+
+  setTimeout(() => {
+    imagen_actual = (imagen_actual + direccion + imagenes_producto.length) % imagenes_producto.length;
+    imagen.src = imagenes_producto[imagen_actual];
+    imagen.classList.remove("imagen_oculta");
+    bloqueado = false;
+  }, 300);
+}
+
 
 function crear_talles(producto){
   const contenedor_talles=document.querySelector(".talles");

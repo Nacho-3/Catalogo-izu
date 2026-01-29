@@ -2,22 +2,25 @@ const contenedor_productos = document.getElementById("gridProductos");
 const menu_principal = document.querySelector(".menu_principal");
 const btn_menu = document.getElementById("openMenu");
 const overlay_menu = document.getElementById("menuOverlay");
-
 let lista_productos = [];
 
-/* =============================
-   CARGA DE PRODUCTOS
-============================= */
+const searchInput = document.getElementById("searchInput");
+
+let filtroActivo = {
+  categoria: null,
+  subcategoria: null
+};
+
+
+
+/* CARGA */
 fetch("data/productos.json")
   .then(res => res.json())
-  .then(datos => {
-    lista_productos = datos;
+  .then(data => {
+    lista_productos = data;
     mostrar_productos(lista_productos);
   });
 
-/* =============================
-   MOSTRAR PRODUCTOS
-============================= */
 function mostrar_productos(productos) {
   contenedor_productos.innerHTML = "";
 
@@ -45,38 +48,14 @@ function mostrar_productos(productos) {
   });
 }
 
-/* =============================
-   FILTROS DEL MENU
-============================= */
-document.querySelectorAll(".submenu a, .item_menu[data-categoria]").forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
 
-    const categoria = link.dataset.categoria;
-    const subcategoria = link.dataset.subcategoria;
-    const tipo = link.dataset.tipo;
-
-    let filtrados = lista_productos;
-
-    if (tipo !== "all") {
-      filtrados = filtrados.filter(p => p.categoria === categoria);
-
-      if (subcategoria) {
-        filtrados = filtrados.filter(p => p.subcategoria === subcategoria);
-      }
-    }
-
-    mostrar_productos(filtrados);
-    cerrar_menu();
-  });
-});
-
-/* =============================
-   MENU HAMBURGUESA
-============================= */
+/* HAMBURGUESA */
 btn_menu.addEventListener("click", () => {
   menu_principal.classList.toggle("abierto");
   overlay_menu.classList.toggle("show");
+
+  document.querySelectorAll(".item_menu.abierto")
+    .forEach(i => i.classList.remove("abierto"));
 });
 
 overlay_menu.addEventListener("click", cerrar_menu);
@@ -84,20 +63,74 @@ overlay_menu.addEventListener("click", cerrar_menu);
 function cerrar_menu() {
   menu_principal.classList.remove("abierto");
   overlay_menu.classList.remove("show");
+
+  document.querySelectorAll(".item_menu.abierto")
+    .forEach(i => i.classList.remove("abierto"));
 }
 
-/* =============================
-   SUBMENUS MOBILE
-============================= */
-const items_menu = document.querySelectorAll(".item_menu.tiene_submenu");
+/* SUBMENÚS MOBILE */
+const categoriasPadre = document.querySelectorAll(".item_menu.tiene_submenu");
 
-items_menu.forEach(item => {
-  item.addEventListener("click", () => {
-    if (window.innerWidth <= 768) {
-      items_menu.forEach(i => {
-        if (i !== item) i.classList.remove("abierto");
-      });
-      item.classList.toggle("abierto");
-    }
+categoriasPadre.forEach(item => {
+  item.addEventListener("click", e => {
+    if (window.innerWidth > 768) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    categoriasPadre.forEach(i => {
+      if (i !== item) i.classList.remove("abierto");
+    });
+
+    item.classList.toggle("abierto");
   });
 });
+
+/* FILTROS (SOLO SUBMENÚS Y VER TODO) */
+document.querySelectorAll(
+  ".submenu .filtro, .item_menu.filtro:not(.tiene_submenu)"
+)
+
+  .forEach(filtro => {
+    filtro.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const categoria = filtro.dataset.categoria;
+      const subcategoria = filtro.dataset.subcategoria;
+
+      if (subcategoria) {
+        mostrar_productos(lista_productos.filter(p => p.subcategoria === subcategoria));
+      } else if (categoria === "todos") {
+        mostrar_productos(lista_productos);
+      } else {
+        mostrar_productos(lista_productos.filter(p => p.categoria === categoria));
+      }
+
+      cerrar_menu();
+    });
+  });
+
+function aplicarFiltros() {
+  let resultado = [...lista_productos];
+
+  if (filtroActivo.categoria && filtroActivo.categoria !== "todos") {
+    resultado = resultado.filter(p => p.categoria === filtroActivo.categoria);
+  }
+
+  if (filtroActivo.subcategoria) {
+    resultado = resultado.filter(p => p.subcategoria === filtroActivo.subcategoria);
+  }
+
+  const texto = searchInput.value.toLowerCase().trim();
+
+  if (texto !== "") {
+    resultado = resultado.filter(p =>
+      p.nombre.toLowerCase().includes(texto) ||
+      p.descripcion.toLowerCase().includes(texto)
+    );
+  }
+
+  mostrar_productos(resultado);
+}
+searchInput.addEventListener("input", aplicarFiltros);

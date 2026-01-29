@@ -17,5 +17,47 @@
       "L": [],
       "XL": ["negro", "rojo"]
     }
+  },
+
+  {
+    "id": "01_jeanbaggy_orange",
+    "nombre": "Jean Baggy Naranja",
+    "precio": 12000,
+    "categoria": "jeans",
+    "subcategoria": "baggy",
+    "imagenes": [
+      "assets/img/BuddyJeans/JeansBaggy/01_jeanbaggy_orange.jpg",
+      "assets/img/BuddyJeans/JeansBaggy/02_jeanbaggy_orange.jpg",
+      "assets/img/remera1.png"
+    ],
+    "descripcion": "Jean baggy naranja",
+    "talles": {
+      "S": ["naranja"],
+      "M": ["naranja"],
+      "L": [],
+      "XL": ["naranja"]
+    }
+  },
+
+  {
+    "id": "01_jeanbaggy_spider",
+    "nombre": "Jean Baggy Araña",
+    "precio": 12000,
+    "categoria": "jeans",
+    "subcategoria": "baggy",
+    "imagenes": [
+      "assets/img/BuddyJeans/JeansBaggy/01_jeanbaggy_spider.jpg",
+      "assets/img/BuddyJeans/JeansBaggy/02_jeanbaggy_spider.jpg",
+      "assets/img/remera1.png"
+    ],
+    "descripcion": "Jean baggy con diseño de araña",
+    "talles": {
+      "S": ["negro"],
+      "M": ["negro"],
+      "L": [],
+      "XL": ["negro"]
+    }
   }
 ]
+
+
