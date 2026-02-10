@@ -8,7 +8,7 @@
     "imagenes": [
       "assets/img/BuddyJeans/JeansBaggy/02_jeanbaggy_pecas.jpg",
       "assets/img/BuddyJeans/JeansBaggy/01_jeanbaggy_pecas.jpg",
-      "assets/img/remera1.png"
+      "assets/img/buddyJeans/pantalones_largos.jpg"
     ],
     "descripcion": "Jean baggy con pecas",
     "talles": {
@@ -18,7 +18,6 @@
       "XL": ["negro", "rojo"]
     }
   },
-
   {
     "id": "01_jeanbaggy_orange",
     "nombre": "Jean Baggy Naranja",
@@ -28,7 +27,7 @@
     "imagenes": [
       "assets/img/BuddyJeans/JeansBaggy/01_jeanbaggy_orange.jpg",
       "assets/img/BuddyJeans/JeansBaggy/02_jeanbaggy_orange.jpg",
-      "assets/img/remera1.png"
+      "assets/img/buddyJeans/pantalones_largos.jpg"
     ],
     "descripcion": "Jean baggy naranja",
     "talles": {
@@ -38,7 +37,6 @@
       "XL": ["naranja"]
     }
   },
-
   {
     "id": "01_jeanbaggy_spider",
     "nombre": "Jean Baggy Araña",
@@ -48,7 +46,7 @@
     "imagenes": [
       "assets/img/BuddyJeans/JeansBaggy/01_jeanbaggy_spider.jpg",
       "assets/img/BuddyJeans/JeansBaggy/02_jeanbaggy_spider.jpg",
-      "assets/img/remera1.png"
+      "assets/img/buddyJeans/pantalones_largos.jpg"
     ],
     "descripcion": "Jean baggy con diseño de araña",
     "talles": {
@@ -56,6 +54,98 @@
       "M": ["negro"],
       "L": [],
       "XL": ["negro"]
+    }
+  },
+      {
+    "id": "01_sudadera_espadablanco",
+    "nombre": "Sudadera Espada Blanca",
+    "precio": 12000,
+    "categoria": "sudaderas",
+    "subcategoria": "estampadas",
+    "imagenes": [
+      "assets/img/sudaderas/sudaderas estampadas/01_sudadera_espadablanco.jpg",
+      "assets/img/sudaderas/sudaderas estampadas/02_sudadera_espadablanco.jpg",
+      "assets/img/sudaderas/sudaderas.jpg"
+    ],
+    "descripcion": "Sudadera espada blanca",
+    "talles": {
+      "S": ["blanco"],
+      "M": ["blanco"],
+      "L": [],
+      "XL": ["blanco"]
+    }
+  },
+  {
+    "id": "01_sudadera_authenticnegro",
+    "nombre": "Sudadera Authentic Negra",
+    "precio": 12000,
+    "categoria": "sudaderas",
+    "subcategoria": "estampadas",
+    "imagenes": [
+      "assets/img/sudaderas/sudaderas estampadas/01_sudadera_authenticnegro.jpg",
+      "assets/img/sudaderas/sudaderas.jpg"
+    ],
+    "descripcion": "Sudadera authentic negra",
+    "talles": {
+      "S": ["negro"],
+      "M": ["negro"],
+      "L": [],
+      "XL": ["negro"]
+    }
+  },
+  {
+    "id": "01_sudadera_companyblanco",
+    "nombre": "Sudadera Company Blanca",
+    "precio": 12000,
+    "categoria": "sudaderas",
+    "subcategoria": "estampadas",
+    "imagenes": [
+      "assets/img/sudaderas/sudaderas estampadas/01_sudadera_companyblanco.jpg",
+      "assets/img/sudaderas/sudaderas estampadas/02_sudadera_companyblanco.jpg",
+      "assets/img/sudaderas/sudaderas.jpg"
+    ],
+    "descripcion": "Sudadera company blanca",
+    "talles": {
+      "S": ["blanco"],
+      "M": ["blanco"],
+      "L": [],
+      "XL": ["blanco"]
+    }
+  },
+  {
+    "id": "01_sudadera_lisanegro",
+    "nombre": "Sudadera Lisa Negra",
+    "precio": 12000,
+    "categoria": "sudaderas",
+    "subcategoria": "lisas",
+    "imagenes": [
+      "assets/img/sudaderas/sudaderas lisas/01_sudadera_lisanegro.jpg",
+      "assets/img/sudaderas/sudaderas.jpg"
+    ],
+    "descripcion": "Sudadera lisa negra",
+    "talles": {
+      "S": ["negro"],
+      "M": ["negro"],
+      "L": [],
+      "XL": ["negro"]
+    }
+  },
+  {
+    "id": "01_sudadera_lisablanca",
+    "nombre": "Sudadera Lisa Blanca",
+    "precio": 12000,
+    "categoria": "sudaderas",
+    "subcategoria": "lisas",
+    "imagenes": [
+      "assets/img/sudaderas/sudaderas lisas/01_sudadera_lisablanco.jpg",
+      "assets/img/sudaderas/sudaderas.jpg"
+    ],
+    "descripcion": "Sudadera lisa blanca",
+    "talles": {
+      "S": ["blanco"],
+      "M": ["blanco"],
+      "L": [],
+      "XL": ["blanco"]
     }
   }
 ]

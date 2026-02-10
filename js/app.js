@@ -2,18 +2,14 @@ const contenedor_productos = document.getElementById("gridProductos");
 const menu_principal = document.querySelector(".menu_principal");
 const btn_menu = document.getElementById("openMenu");
 const overlay_menu = document.getElementById("menuOverlay");
-let lista_productos = [];
-
 const searchInput = document.getElementById("searchInput");
 
+let lista_productos = [];
 let filtroActivo = {
   categoria: null,
   subcategoria: null
 };
 
-
-
-/* CARGA */
 fetch("data/productos.json")
   .then(res => res.json())
   .then(data => {
@@ -48,8 +44,6 @@ function mostrar_productos(productos) {
   });
 }
 
-
-/* HAMBURGUESA */
 btn_menu.addEventListener("click", () => {
   menu_principal.classList.toggle("abierto");
   overlay_menu.classList.toggle("show");
@@ -68,7 +62,6 @@ function cerrar_menu() {
     .forEach(i => i.classList.remove("abierto"));
 }
 
-/* SUBMENÚS MOBILE */
 const categoriasPadre = document.querySelectorAll(".item_menu.tiene_submenu");
 
 categoriasPadre.forEach(item => {
@@ -86,30 +79,27 @@ categoriasPadre.forEach(item => {
   });
 });
 
-/* FILTROS (SOLO SUBMENÚS Y VER TODO) */
 document.querySelectorAll(
   ".submenu .filtro, .item_menu.filtro:not(.tiene_submenu)"
-)
+).forEach(filtro => {
+  filtro.addEventListener("click", e => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  .forEach(filtro => {
-    filtro.addEventListener("click", e => {
-      e.preventDefault();
-      e.stopPropagation();
+    const categoria = filtro.dataset.categoria;
+    const subcategoria = filtro.dataset.subcategoria;
 
-      const categoria = filtro.dataset.categoria;
-      const subcategoria = filtro.dataset.subcategoria;
+    if (subcategoria) {
+      mostrar_productos(lista_productos.filter(p => p.subcategoria === subcategoria));
+    } else if (categoria === "todos") {
+      mostrar_productos(lista_productos);
+    } else {
+      mostrar_productos(lista_productos.filter(p => p.categoria === categoria));
+    }
 
-      if (subcategoria) {
-        mostrar_productos(lista_productos.filter(p => p.subcategoria === subcategoria));
-      } else if (categoria === "todos") {
-        mostrar_productos(lista_productos);
-      } else {
-        mostrar_productos(lista_productos.filter(p => p.categoria === categoria));
-      }
-
-      cerrar_menu();
-    });
+    cerrar_menu();
   });
+});
 
 function aplicarFiltros() {
   let resultado = [...lista_productos];
@@ -133,4 +123,5 @@ function aplicarFiltros() {
 
   mostrar_productos(resultado);
 }
+
 searchInput.addEventListener("input", aplicarFiltros);
